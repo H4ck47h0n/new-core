@@ -130,47 +130,47 @@ def add_friends(username):
                                     "satus": "false",
                                     "message": "You can't add youself as your friends"
                                 })
-	        else:
-	            try:
-	             	user_add = User.query.filter_by(username=user_now_name).all()[0]
-	                user_now = User.query.filter_by(id=id_now).all()[0]
-	                if id_now in user_add.likes:
-	                    return jsonfy({
+			else:
+				try:
+					user_add = User.query.filter_by(username=user_now_name).all()[0]
+					user_now = User.query.filter_by(id=id_now).all()[0]
+					if id_now in user_add.likes:
+						return jsonfy({
                                 "status": "false",
 	                        "message": "You are ever be the Friends"
 
 	                    })
-	                elif id_now in user_add.dislikes:
-	                    return jsonfy({
+					elif id_now in user_add.dislikes:
+						return jsonfy({
 	                        "status": "false",
 	                        "message": "The man has been you dislike list"
 	                    })
-	                elif str(user_add.id) not in user_now.likes or str(user_add.id) not in user_now.dislikes:
-	                    if user_now.id in user_add.willlike:
-	                        user_add.likes = user_add.likes + \
-	                            "," + str(user_now.id)
-	                        user_now.likes = user_now.likes + \
-	                            "," + str(user_add.id)
-	                        user_add.willlike = usr_add.willlike.replace(
-	                            "," + str(usr_add.id), "")
-	                        db.session.add(user_add)
-	                        db.session.add(usr_now)
-	                        db.commit()
-	                        return jsonfy({
+					elif str(user_add.id) not in user_now.likes or str(user_add.id) not in user_now.dislikes:
+						if user_now.id in user_add.willlike:
+							user_add.likes = user_add.likes + \
+							    "," + str(user_now.id)
+							user_now.likes = user_now.likes + \
+								    "," + str(user_add.id)
+							user_add.willlike = usr_add.willlike.replace(
+							   "," + str(usr_add.id), "")
+							db.session.add(user_add)
+							db.session.add(usr_now)
+							db.commit()
+							return jsonfy({
 	                            "status": "success",
 	                            "message": "Success to add the people to your friend list"
 	                        })
-	                    else:
-	                        user_now.willlike = user_now.willlike + \
-	                            "," + str(usr_add.id)
-	                        db.session.add(user_now)
-	                        db.session.commit()
-	                        return jsonfy({
+						else:
+							user_now.willlike = user_now.willlike + \
+						    "," + str(usr_add.id)
+							db.session.add(user_now)
+							db.session.commit()
+						return jsonfy({
 	                            "status": "success",
 	                            "message": "success to add the people to you willlike list"
 	                        })
-	            except:
-	                return jsonfy({
+				except:
+					return jsonfy({
 	                    "status":"success",
 	                    "message":"There are some errors, which may cause that you can't use the system now"
                         })
@@ -194,11 +194,11 @@ def add_friends(username):
                                     "message": "Successfully delete the friend"
                                 })
 			else:
-	    		return jsonfy({
+				return jsonfy({
                             "status": "false",
                             "message": "You are not friends yet"
                         })
-	    else:pass
+		else:pass
 
 
 # app.run(host="0.0.0.0",debug=True)
