@@ -17,7 +17,7 @@ def hehe(name):
                     "sex":"F",
                     "interests":{
                         "1":choice([1,0,1,0]),
-                        "2":choice([1,0,1,0]), 
+                        "2":choice([1,0,1,0]),
 			"3":"1",
 			"4":"1",
 			"5":choice([1,0,1,0]),
