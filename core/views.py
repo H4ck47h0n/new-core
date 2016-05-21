@@ -173,21 +173,21 @@ def add_friends(username):
 				user_delete = User.query.filter_by(username=username).all()[0]
 			except:
 				return jsonfy({
-	    			status:"false",
-	    			message:"There is no such a  account exit"
-	    			})
-	    	user_now = User.query.filter_by(username=session["username"])
-	    	if user_delete.id in user_now.likes:
-	    		user_delete.likes = user_delete.likes.replace(","+str(user_now.id),"")
-	    		user_now.likes    = user_now.likes.replace(","+str(user_delete.id),"")
-	    		db.session.add(user_delete)
-	    		db.session.add(user_now)
-	    		db.session.commit()
-	    		return jsonfy({
-	    			"status":"success",
-	    			"message":"Successfully delete the friend"
-	    			})
-	    	else:
+					status:"false",
+					message:"There is no such a  account exit"
+				})
+			user_now = User.query.filter_by(username=session["username"])
+			if user_delete.id in user_now.likes:
+				user_delete.likes = user_delete.likes.replace(","+str(user_now.id),"")
+				user_now.likes    = user_now.likes.replace(","+str(user_delete.id),"")
+				db.session.add(user_delete)
+				db.session.add(user_now)
+				db.session.commit()
+				return jsonfy({
+					"status":"success",
+					"message":"Successfully delete the friend"
+					})
+			else:
 	    		return jsonfy({
 	    			"status":"false",
 	    			"message":"You are not friends yet"
