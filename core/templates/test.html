@@ -1,0 +1,26 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://static.opentok.com/v2/js/opentok.js" charset="utf-8"></script>
+</head>
+<body>
+
+
+<div align="center" id="shit"></div>
+       <script charset="utf-8">
+      var apiKey = '45593812';
+      var element=document.getElementById("shit");
+      var sessionId = '1_MX40NTU5MzgxMn5-MTQ2Mzg3ODAwOTgxOX5icXVOd2luWEhEYzFnR0NZZElWRlI0d1h-UH4';
+      var token = 'T1==cGFydG5lcl9pZD00NTU5MzgxMiZzaWc9MTMwNTRjZjBiOWQyZjNmNDUwMDFiZGE5YmZiZGM2Mzc3ZTcwNjM1NDpzZXNzaW9uX2lkPTFfTVg0ME5UVTVNemd4TW41LU1UUTJNemczT0RBd09UZ3hPWDVpY1hWT2QybHVXRWhFWXpGblIwTlpaRWxXUmxJMGQxaC1VSDQmY3JlYXRlX3RpbWU9MTQ2Mzg3ODE1MCZub25jZT0wLjg2MDcyMDQ4NDA1MTg1MzQmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTQ2NDQ4Mjk0OQ==';
+      var session = OT.initSession(apiKey, sessionId)
+        .on('streamCreated', function(event) {
+          session.subscribe(event.stream);
+        })
+        .connect(token, function(error) {
+          var publisher = OT.initPublisher(element);
+          session.publish(publisher);
+        });
+    </script>
+</body>
+</html>

@@ -145,6 +145,9 @@ def account(username):
 									"message": "No login account found"
 								})
 
+@app.route("/test")
+def test_chat():
+	return render_template("test.html")
 
 @app.route("/friends", methods=["GET"])
 def friends():
