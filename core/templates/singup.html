@@ -36,7 +36,7 @@
   <link rel="canonical" href="http://www.example.com/">
   -->
 
-  <link rel="stylesheet" href="http://7mnoy1.com1.z0.glb.clouddn.com/css/amazeui/amazeui.min.css">
+  <link rel="stylesheet" href="{{ url_for('static',filename='amazeui.min.css')}}">
   <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/app.css') }}">
 <style type="text/css">
 video { 
@@ -123,7 +123,7 @@ video {
 </footer>
     <hr>
 <video
-  src="http://7mnoy1.com1.z0.glb.clouddn.com/turtle.mp4"
+  src="{{ url_for('static',filename='turtle.mp4')}}"
   autoplay
   loop
 />
@@ -137,9 +137,9 @@ video {
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="http://7mnoy1.com1.z0.glb.clouddn.com/js/amazeui/amazeui.min.js"></script>
+<script src="{{ url_for('static',filename='amazeui.min.js')}}"></script>
 <!--<![endif]-->
-<script src="http://7mnoy1.com1.z0.glb.clouddn.com/js/amazeui/amazeui.min.js"></script>
+<script src="{{ url_for('static',filename='jquery.min.js')}}"></script>
 
 </body>
 </html>

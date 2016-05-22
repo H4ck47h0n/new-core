@@ -8,8 +8,6 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1">
   <title>Login</title>
-
-  <!-- Set render engine for 360 browser -->
   <meta name="renderer" content="webkit">
 
   <!-- No Baidu Siteapp-->
@@ -19,13 +17,13 @@
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
+  <link rel="icon" sizes="192x192" href="{{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-  <link rel="apple-touch-icon-precomposed" href="{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
+  <link rel="apple-touch-icon-precomposed" href="{{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
   <meta name="msapplication-TileImage" content="{{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
@@ -36,7 +34,7 @@
   <link rel="canonical" href="http://www.example.com/">
   -->
 
-  <link rel="stylesheet" href="http://7mnoy1.com1.z0.glb.clouddn.com/css/amazeui/amazeui.min.css">
+  <link rel="stylesheet" href="{{ url_for('static',filename='amazeui.min.css')}}">
   <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/app.css') }}">
 <style type="text/css">
 video { 
@@ -57,11 +55,11 @@ video {
   background: rgba(255, 255, 255, 0.30);
   color: white;
   padding: 2rem;
-  width: 33%;
+  width: 40%;
   margin:2rem;
-  margin-right: 33.3%;
-  margin-left: 33.3%;
-  margin-top:15%;
+  margin-right: 30%;
+  margin-left: 30%;
+  margin-top:14%;
   float: center;
   font-size: 1.2rem;
 }
@@ -101,7 +99,6 @@ video {
       <br />
       <div class="am-cf">
         <input type="submit" name="" value="Log in" class="am-btn am-btn-primary am-btn-sm am-fl">
-        
       </div>
       <button class="am-btn am-btn-success am-btn-sm am-fl" onclick="window.location = "http://t66y.com";"></button>
     </form>
@@ -113,7 +110,7 @@ video {
 </footer>
     <hr>
 <video
-  src="http://7mnoy1.com1.z0.glb.clouddn.com/turtle.mp4"
+  src="{{ url_for('static',filename='turtle.mp4')}}"
   autoplay
   loop
 />
@@ -127,9 +124,9 @@ video {
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="http://7mnoy1.com1.z0.glb.clouddn.com/js/amazeui/amazeui.min.js"></script>
+<script src="{{ url_for('static',filename='amazeui.min.js')}}"></script>
 <!--<![endif]-->
-<script src="http://7mnoy1.com1.z0.glb.clouddn.com/js/amazeui/amazeui.min.js"></script>
+<script src="{{ url_for('static',filename='jquery.min.js')}}"></script>
 
 </body>
 </html>

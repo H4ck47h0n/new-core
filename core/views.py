@@ -6,7 +6,7 @@ import flask.ext.login as flask_login
 from .models import User
 from functools import wraps
 from flask.ext.login import current_user, login_required, login_user, logout_user
-from flask import request, render_template, session,redirect,url_for
+from flask import request, render_template, session,redirect,url_for,send_file
 from flask import jsonify as jsonfy
 from datetime import timedelta
 app.permanent_session_lifetime = timedelta(days=31)
@@ -250,4 +250,7 @@ def add_friends(username):
 def random_chat():
 	pass
 
-# app.run(host="0.0.0.0",debug=True)
+@app.route("/av")
+def av():
+	import os
+	return app.send_static_file("turtle.mp4")

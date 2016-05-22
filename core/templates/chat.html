@@ -11,7 +11,7 @@
   </title>
 
   <!-- Set render engine for 360 browser -->
-  <meta name="renderer" content="webkit">
+   <meta name="renderer" content="webkit">
 
   <!-- No Baidu Siteapp-->
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
@@ -20,13 +20,13 @@
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
+  <link rel="icon" sizes="192x192" href="{{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-  <link rel="apple-touch-icon-precomposed" href="{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
+  <link rel="apple-touch-icon-precomposed" href="{{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
   <meta name="msapplication-TileImage" content="{{ url_for('static',filename='assets/i/app-icon72x72@2x.png') }}">
@@ -37,8 +37,9 @@
   <link rel="canonical" href="http://www.example.com/">
   -->
 
-  <link rel="stylesheet" href="http://7mnoy1.com1.z0.glb.clouddn.com/css/amazeui/amazeui.min.css">
+  <link rel="stylesheet" href="{{ url_for('static',filename='amazeui.min.css')}}">
   <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/app.css') }}">
+      <script src="https://static.opentok.com/v2/js/opentok.js" charset="utf-8"></script>
 <style type="text/css">
 video { 
     position: fixed;
@@ -92,20 +93,7 @@ video {
   </p>
 </footer>
     <hr>
-<video
-  src="http://7mnoy1.com1.z0.glb.clouddn.com/turtle.mp4"
-  autoplay
-  loop
-/>
-
-<!-- 以上页面内容 开发时删除 -->
-
-<!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
-<![endif]-->
-    <script charset="utf-8">
+        <script charset="utf-8">
       var apiKey = '45593812';
       var sessionId = '1_MX40NTU5MzgxMn5-MTQ2Mzg3ODAwOTgxOX5icXVOd2luWEhEYzFnR0NZZElWRlI0d1h-UH4';
       var token = 'T1==cGFydG5lcl9pZD00NTU5MzgxMiZzaWc9MTMwNTRjZjBiOWQyZjNmNDUwMDFiZGE5YmZiZGM2Mzc3ZTcwNjM1NDpzZXNzaW9uX2lkPTFfTVg0ME5UVTVNemd4TW41LU1UUTJNemczT0RBd09UZ3hPWDVpY1hWT2QybHVXRWhFWXpGblIwTlpaRWxXUmxJMGQxaC1VSDQmY3JlYXRlX3RpbWU9MTQ2Mzg3ODE1MCZub25jZT0wLjg2MDcyMDQ4NDA1MTg1MzQmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTQ2NDQ4Mjk0OQ==';
@@ -118,11 +106,25 @@ video {
           session.publish(publisher);
         });
     </script>
+<video
+  src="{{ url_for('static',filename='turtle.mp4')}}"
+  autoplay
+  loop
+/>
+
+<!-- 以上页面内容 开发时删除 -->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="http://7mnoy1.com1.z0.glb.clouddn.com/js/amazeui/amazeui.min.js"></script>
+<script src="{{ url_for('static',filename='amazeui.min.js')}}"></script>
 <!--<![endif]-->
-<script src="http://7mnoy1.com1.z0.glb.clouddn.com/js/amazeui/amazeui.min.js"></script>
-    <script src="https://static.opentok.com/v2/js/opentok.js" charset="utf-8"></script>
+<script src="{{ url_for('static',filename='jquery.min.js')}}"></script>
+
 </body>
 </html>
 
