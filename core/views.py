@@ -6,7 +6,7 @@ import flask.ext.login as flask_login
 from .models import User
 from functools import wraps
 from flask.ext.login import current_user, login_required, login_user, logout_user
-from flask import request, render_template, session
+from flask import request, render_template, session,redirect,url_for
 from flask import jsonify as jsonfy
 from datetime import timedelta
 app.permanent_session_lifetime = timedelta(days=31)
@@ -30,12 +30,20 @@ def load_user(id):
 @app.route("/")
 def index():
 	return "Welcome"
-
+@app.route("/chat/")
+def chat():
+	return render_template("chat.html")
 @app.route("/login", methods=["GET", "POST"])
 def login():
 	if request.method == "POST":
 		users = User.query.all()
-		name = request.get_json()['username']
+		# try:
+		# 	name = request.get_json()['username']
+		# 	password = request.get_json()['password']
+		# except Exception,e:
+		# 	print(e)
+		name = request.form["name"]
+		password = request.form["password"]
 		try:
 			user = User.query.filter_by(username=name).all()[0]
 		except Exception,e:
@@ -43,13 +51,9 @@ def login():
 				{"status": "false",
 				 "message": str(e)
 				 })
-		password = request.get_json()['password']
 		if password == user.password:
 			login_user(user,remember=True)
-			return jsonfy(
-				{"status": "success",
-				 "message": "login success"
-				 })
+			return  redirect(url_for("index"))
 		else:
 			return jsonfy({
 				"status": "false",
@@ -66,7 +70,12 @@ def logout():
 		"status": "success",
 		"message": "logout success"
 	})
-
+@app.route("/fake")
+def fake():
+    return redirect(url_for("chat"))
+@app.route("/signup")
+def signup():
+	return render_template("singup.html")
 
 @app.route('/account/<username>', methods=["GET", "POST", "DELETE", "PUT"])
 def account(username):
@@ -237,5 +246,8 @@ def add_friends(username):
 						})
 		else:pass
 
+@app.route("/char/random")
+def random_chat():
+	pass
 
 # app.run(host="0.0.0.0",debug=True)
